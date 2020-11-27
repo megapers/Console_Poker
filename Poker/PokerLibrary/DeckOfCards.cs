@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PokerLibrary
 {
-    class DeckOfCards: Card
+    public class DeckOfCards: Card
     {
         private const int NUM_OF_CARDS = 52;
         private const int NUM_OF_CARD_VALS = 13;
@@ -24,8 +24,8 @@ namespace PokerLibrary
                 foreach (VALUE v in Enum.GetValues(typeof(VALUE)))
                 {
                     deck[i] = new Card {MySuit = s, MyValue = v};
+                    i++;
                 }
-                i++;
             }
             shuffleDeck();//shuffle the deck after it's initialized
         }
