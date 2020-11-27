@@ -12,9 +12,9 @@ namespace ConsoleApp1
             Console.BufferWidth = 65;
             Console.BufferHeight = 40;
 
-            var card = new Card {MySuit = Card.SUIT.CLUBS, MyValue = Card.VALUE.ACE };
+            var card = new Card {MySuit = Card.SUIT.DIAMONDS, MyValue = Card.VALUE.QUEEN };
 
-            DrawCards.DrawCardOutline(0, 0);
+            //DrawCards.PrintCard(card);
             DrawCards.DrawCardSuitValue(card, 0, 0);
 
            

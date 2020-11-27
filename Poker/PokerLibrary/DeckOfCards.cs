@@ -12,11 +12,6 @@ namespace PokerLibrary
 
         
 
-        //public DeckOfCards()
-        //{
-        //    deck = new Card[NUM_OF_CARDS];//initialize deck to hold 52 cards
-        //}
-
         public Card[] getDeck { get { return deck; } } //get current deck
 
         //Initialize a deck

@@ -20,6 +20,7 @@ namespace PokerLibrary
         public SUIT MySuit { get; set; }
         public VALUE MyValue { get; set; }
 
+        
 
     }
 }
