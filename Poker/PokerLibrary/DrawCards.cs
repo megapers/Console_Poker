@@ -55,209 +55,129 @@ namespace PokerLibrary
             Console.Write(card.MyValue);
         }
 
-        private static string _printString;
-        public static void PrintCard(Card card)
+        public static void DrawCardSuitValue1(Card card)
         {
+            char cardSuit = ' ';
+            
             Console.OutputEncoding = Encoding.UTF8;
+            Console.BackgroundColor = ConsoleColor.White;
 
-            if (card.MyValue == Card.VALUE.TWO)
-            {
-                _printString =
-                    " V         " +
-                    "     S     " +
-                    "           " +
-                    "           " +
-                    "           " +
-                    "     S     " +
-                    "         V ";
-                PrintMethod(card);
-            }
-            if (card.MyValue == Card.VALUE.THREE)
-            {
-                _printString =
-                    " V         " +
-                    "     S     " +
-                    "           " +
-                    "     S     " +
-                    "           " +
-                    "     S     " +
-                    "         V ";
-                PrintMethod(card);
-            }
-            if (card.MyValue == Card.VALUE.FOUR)
-            {
-                _printString =
-                    " V         " +
-                    "   S   S   " +
-                    "           " +
-                    "           " +
-                    "           " +
-                    "   S   S   " +
-                    "         V ";
-                PrintMethod(card);
-            }
-            if (card.MyValue == Card.VALUE.FIVE)
-            {
-                _printString =
-                    " V         " +
-                    "   S   S   " +
-                    "           " +
-                    "     S     " +
-                    "           " +
-                    "   S   S   " +
-                    "         V ";
-                PrintMethod(card);
-            }
-            if (card.MyValue == Card.VALUE.SIX)
-            {
-                _printString =
-                    " V         " +
-                    "   S   S   " +
-                    "           " +
-                    "   S   S   " +
-                    "           " +
-                    "   S   S   " +
-                    "         V ";
-                PrintMethod(card);
-            }
-            if (card.MyValue == Card.VALUE.SEVEN)
-            {
-                _printString =
-                    " V         " +
-                    "   S   S   " +
-                    "     S     " +
-                    "   S   S   " +
-                    "           " +
-                    "   S   S   " +
-                    "         V ";
-                PrintMethod(card);
-            }
-            if (card.MyValue == Card.VALUE.EIGHT)
-            {
-                _printString =
-                    " V         " +
-                    "   S   S   " +
-                    "     S     " +
-                    "   S   S   " +
-                    "     S     " +
-                    "   S   S   " +
-                    "         V ";
-                PrintMethod(card);
-            }
-            if (card.MyValue == Card.VALUE.NINE)
-            {
-                _printString =
-                    " V         " +
-                    "   S S S   " +
-                    "           " +
-                    "   S S S   " +
-                    "           " +
-                    "   S S S   " +
-                    "         V ";
-                PrintMethod(card);
-            }
-            if (card.MyValue == Card.VALUE.TEN || card.MyValue == Card.VALUE.JACK || card.MyValue == Card.VALUE.QUEEN 
-                || card.MyValue == Card.VALUE.KING || card.MyValue == Card.VALUE.ACE)
-            {
-                _printString =
-                    " V         " +
-                    "    S S    " +
-                    "     S     " +
-                    "  S S S S  " +
-                    "     S     " +
-                    "    S S    " +
-                    "         V ";
-                PrintMethod(card);
-            }
-        }
-        private static void PrintMethod(Card card)
-        {
-            bool hasWrittenFirstNumber = false;
 
             switch (card.MySuit)
             {
                 case Card.SUIT.HEARTS:
+                    cardSuit = '♥';
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
                 case Card.SUIT.DIAMONDS:
+                    cardSuit = '♦';
                     Console.ForegroundColor = ConsoleColor.Red;
                     break;
                 case Card.SUIT.CLUBS:
+                    cardSuit = '♣';
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    break;
                 case Card.SUIT.SPADES:
+                    cardSuit = '♠';
                     Console.ForegroundColor = ConsoleColor.Black;
                     break;
             }
 
-            for (int i = 0; i < _printString.Length; i++)
-            {
-                Console.BackgroundColor = ConsoleColor.White;
-                if (i % 11 == 0 && i != 0)
-                {
-                    Console.CursorLeft -= 11;
-                    Console.CursorTop += 1;
-                }
-                if (_printString[i] == 'S')
-                {
-                    switch (card.MySuit)
-                    {
-                        case Card.SUIT.HEARTS:
-                            Console.Write('♥');
-                            break;
-                        case Card.SUIT.CLUBS:
-                            Console.Write("♣");
-                            break;
-                        case Card.SUIT.DIAMONDS:
-                            Console.Write("♦");
-                            break;
-                        case Card.SUIT.SPADES:
-                            Console.Write("♠");
-                            break;
-                    }
-                    continue;
-                }
-                else if (_printString[i] == 'V')
-                {
-                    if (card.MyValue == Card.VALUE.TEN)//??????
-                    {
-                        if (hasWrittenFirstNumber == false)
-                        {
-                            Console.Write(10);
-                            hasWrittenFirstNumber = true;
-                            i++;
-                        }
-                        else
-                        {
-                            Console.CursorLeft--;
-                            Console.Write(10);
-                        }
-                        continue;
-                    }
-                    else if (card.MyValue == Card.VALUE.JACK)
-                    {
-                        Console.Write("J");
-                    }
-                    else if (card.MyValue == Card.VALUE.QUEEN)
-                    {
-                        Console.Write("Q");
-                    }
-                    else if (card.MyValue == Card.VALUE.KING)
-                    {
-                        Console.Write("K");
-                    }
-                    else if (card.MyValue == Card.VALUE.ACE)
-                    {
-                        Console.Write("A");
-                    }
-                    else
-                    {
-                        Console.Write((int)card.MyValue);
-                    }
-                }
-                else
-                {
-                    Console.Write(_printString[i]);
-                }
-            }
+            //display the encoded character and value of the card
+
+            Console.Write(card.MyValue + " " + cardSuit + "  ");
+
+           
+        }
+
+        //private static void PrintMethod(Card card)
+        //{
+        //    bool hasWrittenFirstNumber = false;
+
+        //    switch (card.MySuit)
+        //    {
+        //        case Card.SUIT.HEARTS:
+        //        case Card.SUIT.DIAMONDS:
+        //            Console.ForegroundColor = ConsoleColor.Red;
+        //            break;
+        //        case Card.SUIT.CLUBS:
+        //        case Card.SUIT.SPADES:
+        //            Console.ForegroundColor = ConsoleColor.Black;
+        //            break;
+        //    }
+
+        //    for (int i = 0; i < _printString.Length; i++)
+        //    {
+        //        Console.BackgroundColor = ConsoleColor.White;
+        //        if (i % 11 == 0 && i != 0)
+        //        {
+        //            Console.CursorLeft -= 11;
+        //            Console.CursorTop += 1;
+        //        }
+        //        if (_printString[i] == 'S')
+        //        {
+        //            switch (card.MySuit)
+        //            {
+        //                case Card.SUIT.HEARTS:
+        //                    Console.Write('♥');
+        //                    break;
+        //                case Card.SUIT.CLUBS:
+        //                    Console.Write("♣");
+        //                    break;
+        //                case Card.SUIT.DIAMONDS:
+        //                    Console.Write("♦");
+        //                    break;
+        //                case Card.SUIT.SPADES:
+        //                    Console.Write("♠");
+        //                    break;
+        //            }
+        //            continue;
+        //        }
+        //        else if (_printString[i] == 'V')
+        //        {
+        //            if (card.MyValue == Card.VALUE.TEN)//??????
+        //            {
+        //                if (hasWrittenFirstNumber == false)
+        //                {
+        //                    Console.Write(10);
+        //                    hasWrittenFirstNumber = true;
+        //                    i++;
+        //                }
+        //                else
+        //                {
+        //                    Console.CursorLeft--;
+        //                    Console.Write(10);
+        //                }
+        //                continue;
+        //            }
+        //            else if (card.MyValue == Card.VALUE.JACK)
+        //            {
+        //                Console.Write("J");
+        //            }
+        //            else if (card.MyValue == Card.VALUE.QUEEN)
+        //            {
+        //                Console.Write("Q");
+        //            }
+        //            else if (card.MyValue == Card.VALUE.KING)
+        //            {
+        //                Console.Write("K");
+        //            }
+        //            else if (card.MyValue == Card.VALUE.ACE)
+        //            {
+        //                Console.Write("A");
+        //            }
+        //            else
+        //            {
+        //                Console.Write((int)card.MyValue);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            Console.Write(_printString[i]);
+        //        }
+        //   }
             //Console.BackgroundColor = ConsoleColor.Black;
             //Console.ForegroundColor = ConsoleColor.White;
-        }
+       // }
     }
 }

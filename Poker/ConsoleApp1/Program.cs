@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using PokerLibrary;
 
@@ -9,10 +10,13 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            var players = new Player[]
+            var players = new List<Player>
             {
                 new Player{Name ="Atanarjuat"},
-                new Player{Name ="Bibigul"}
+                new Player{Name ="Bibigul"},
+                new Player{Name ="Bomba"},
+                new Player{Name ="Pivo"},
+
 
             };
 
