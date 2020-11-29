@@ -4,8 +4,9 @@ using System.Linq;
 
 namespace PokerLibrary
 {
-    public class QueueDeck
+    public class Deck
     {
+        //Create a deck of 52 cards
         public Queue<Card> CreateCards()
         {
             Queue<Card> cards = new Queue<Card>();
@@ -27,11 +28,11 @@ namespace PokerLibrary
             Random r = new Random(DateTime.Now.Millisecond);
             for (int n = transformedCards.Count - 1; n > 0; --n)
             {
-                //Step 2: Randomly pick a card which has not been shuffled
+                //Randomly pick a card which has not been shuffled
                 int k = r.Next(n + 1);
 
-                //Step 3: Swap the selected item 
-                //        with the last "unselected" card in the collection
+                //Swap the selected item 
+                //with the last "unselected" card in the collection
                 Card temp = transformedCards[n];
                 transformedCards[n] = transformedCards[k];
                 transformedCards[k] = temp;

@@ -7,32 +7,30 @@ namespace ConsoleApp1
 {
     class Program
     {
-
         static void Main(string[] args)
         {
             var players = new List<Player>
             {
-                new Player{Name ="Atanarjuat"},
-                new Player{Name ="Bibigul"},
-                new Player{Name ="Bomba"},
-                new Player{Name ="Pivo"},
-
-
+                new Player{Name ="Tim"},
+                new Player{Name ="Eugene"},
+                new Player{Name ="Denise"},
+                new Player{Name ="Maxine"},
+                new Player{Name ="Viktor"}
             };
 
-            var dc = new DealQueueCards(players);
+            var game = new PlayGame(players);
 
-
-            Console.SetWindowSize(65, 40);
+            Console.SetWindowSize(50, 30);
             // remove scroll bars by setting the buffer to the actual window size
-            Console.BufferWidth = 65;
-            Console.BufferHeight = 40;
+            Console.BufferWidth = 50;
+            Console.BufferHeight = 30;
+            Console.BackgroundColor = ConsoleColor.White;
             Console.Title = "Poker Game";
             bool quit = false;
 
             while (!quit)
             {
-                dc.Deal();
+                game.Play();
 
                 char selection = ' ';
                 while (!selection.Equals('Y') && !selection.Equals('N'))

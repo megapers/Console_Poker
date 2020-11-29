@@ -7,40 +7,27 @@ namespace PokerLibrary
     public class Player: IComparable<Player>
     {
         public string Name { get; set; }
-       // public int Total { get; set; }
-        public Card[] PlayerHand { get; set; } = new Card[5];
-
-        public HandValue handValue { get; set; } = new HandValue();
-
+        public Hand PlayerHand { get; set; } = new Hand();
+      
         public int CompareTo(Player other)
         {
-            if (handValue.handRanking < other.handValue.handRanking) return 1;
-            else if (handValue.handRanking > other.handValue.handRanking) return -1;
-
-            if (handValue.Total < other.handValue.Total) return 1;
-            else if (handValue.Total > other.handValue.Total) return -1;
-
+            //Compare players by highest Hand Ranking
+            if (PlayerHand.Ranking.RankingTypes < other.PlayerHand.Ranking.RankingTypes) return 1;
+            else if (PlayerHand.Ranking.RankingTypes > other.PlayerHand.Ranking.RankingTypes) return -1;
+            // If players have same Hand Ranking, compare by total value of these same rankings
+            if (PlayerHand.CombinationTotal < other.PlayerHand.CombinationTotal) return 1;
+            else if (PlayerHand.CombinationTotal > other.PlayerHand.CombinationTotal) return -1;
+            //In case rankings and their total values are same, compare by kickers
             else
             {
-                for (int i = DealQueueCards.HANDSIZE - 1; i > 0; i--)
+                for (int i = PlayerHand.HandSize - 1; i > 0; i--)
                 {
-                    if (PlayerHand[i].MyValue < other.PlayerHand[i].MyValue) return 1;
-                    if (PlayerHand[i].MyValue > other.PlayerHand[i].MyValue) return -1;
+                    if (PlayerHand.Cards[i].MyValue < other.PlayerHand.Cards[i].MyValue) return 1;
+                    if (PlayerHand.Cards[i].MyValue > other.PlayerHand.Cards[i].MyValue) return -1;
                 }
                 return 0;
             }
         }
-
-        private int compareHands(Card[]handOne, Card[]handTwo)
-        {
-            for (int i = DealQueueCards.HANDSIZE-1; i > 0; i--)
-            {
-                if (handOne[i].MyValue > handTwo[i].MyValue) return 1;
-                if (handOne[i].MyValue < handTwo[i].MyValue) return -1;
-            }
-            return 0;
-        }
-
-        
+       
     }
 }

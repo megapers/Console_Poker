@@ -6,7 +6,6 @@ namespace PokerLibrary
 {
     public class Card
     {
-
         public enum SUIT
         {
             HEARTS, SPADES, DIAMONDS, CLUBS
@@ -19,8 +18,5 @@ namespace PokerLibrary
 
         public SUIT MySuit { get; set; }
         public VALUE MyValue { get; set; }
-
-        
-
     }
 }

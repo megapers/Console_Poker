@@ -4,21 +4,16 @@ using System.Text;
 
 namespace PokerLibrary
 {
-    public class HandValue
+    public class HandRanking
     {
-
-        public enum HandRanking
+        public enum Ranking
         {
             HighCard,
             OnePair,
             ThreeKind,
             Flush
         }
-
       
-        public int Total { get; set; }
-        public HandRanking handRanking { get; set; }
-      
-
+        public Ranking RankingTypes { get; set; }
     }
 }
